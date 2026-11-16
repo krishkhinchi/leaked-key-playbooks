@@ -1,12 +1,19 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, AlertTriangle, Shield, Search, RotateCcw, FileSearch, CheckCircle, ExternalLink, BookOpen, Flag, Clock, ChevronRight } from "lucide-react";
-import { getPlaybook } from "@/lib/playbooks";
+import { getPlaybook, PLAYBOOKS } from "@/lib/playbooks";
 import { SeverityBadge, VerificationBadge, EvidenceBadge, CodeBlock, SectionCard, LastVerified } from "@/components/ui";
 import type { Metadata } from "next";
 
 interface Props {
   params: Promise<{ provider: string; credential: string }>;
+}
+
+export function generateStaticParams() {
+  return PLAYBOOKS.map(({ providerSlug, credentialSlug }) => ({
+    provider: providerSlug,
+    credential: credentialSlug,
+  }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

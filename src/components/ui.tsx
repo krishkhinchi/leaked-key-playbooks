@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Check, Copy, AlertTriangle, Info, CheckCircle, Clock } from "lucide-react";
 import clsx from "clsx";
 import type { SeverityLevel, VerificationStatus, EvidenceLevel } from "@/lib/types";
@@ -124,14 +124,29 @@ export function SectionCard({ title, icon, children, className }: { title: strin
 
 // ── Last Verified ─────────────────────────────────────────────────────────────
 export function LastVerified({ date }: { date: string }) {
-  const d = new Date(date);
-  const now = new Date();
-  const diffDays = Math.floor((now.getTime() - d.getTime()) / (1000 * 60 * 60 * 24));
-  const isStale = diffDays > 180;
+  const [isStale, setIsStale] = useState(false);
+
+  useEffect(() => {
+    const d = new Date(date);
+    const now = new Date();
+    const diffDays = Math.floor((now.getTime() - d.getTime()) / (1000 * 60 * 60 * 24));
+    setIsStale(diffDays > 180);
+  }, [date]);
+
+  const [year, month, day] = date.split("-").map(Number);
+  const formattedDate = !isNaN(year) && !isNaN(month) && !isNaN(day)
+    ? new Date(Date.UTC(year, month - 1, day)).toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+        timeZone: "UTC",
+      })
+    : date;
+
   return (
     <span className={clsx("inline-flex items-center gap-1 text-xs", isStale ? "text-[#D97706]" : "text-[#9CA3AF]")}>
       <Clock className="w-3 h-3" />
-      Verified {d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+      Verified {formattedDate}
       {isStale && " · May be outdated"}
     </span>
   );

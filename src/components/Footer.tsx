@@ -89,7 +89,7 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-[#E5E7EB] flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-[#9CA3AF]">
-            © {new Date().getFullYear()} Leaked Key Playbooks. MIT License. Not affiliated with any listed provider.
+            © 2026 Leaked Key Playbooks. MIT License. Not affiliated with any listed provider.
           </p>
           <div className="flex items-center gap-4">
             <p className="text-xs text-[#9CA3AF] hidden sm:block">Educational reference only. Verify critical steps with official provider documentation.</p>
