@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* ── Core palette ─────────────────────────────────────────────────────── */
+  --color-bg:           #FFFFFF;
+  --color-bg-alt:       #F8FAFC;
+  --color-bg-subtle:    #F1F5F9;
+  --color-surface:      #FFFFFF;
+  --color-surface-raised: #F8FAFC;
+
+  --color-ink:          #111111;
+  --color-body:         #374151;
+  --color-muted:        #555B66;
+  --color-faint:        #9CA3AF;
+  --color-placeholder:  #CBD5E1;
+
+  --color-blue:         #3B82F6;
+  --color-blue-dark:    #2563EB;
+  --color-blue-light:   #6495ED;
+  --color-blue-pale:    #EAF2FF;
+  --color-blue-50:      #EFF6FF;
+  --color-blue-100:     #DBEAFE;
+  --color-blue-200:     #BFDBFE;
+
+  --color-border:       #E5E7EB;
+  --color-border-strong:#D1D5DB;
+
+  /* Status */
+  --color-red:          #EF4444;
+  --color-red-bg:       #FEF2F2;
+  --color-red-border:   #FECACA;
+  --color-amber:        #F59E0B;
+  --color-amber-bg:     #FFFBEB;
+  --color-amber-border: #FDE68A;
+  --color-green:        #10B981;
+  --color-green-bg:     #ECFDF5;
+  --color-green-border: #A7F3D0;
+
+  /* Typography */
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+
+  /* Radius */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   16px;
+  --radius-2xl:  20px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs:  0 1px 2px rgba(0,0,0,0.05);
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md:  0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.04);
+  --shadow-lg:  0 10px 15px rgba(0,0,0,0.08), 0 4px 6px rgba(0,0,0,0.04);
+  --shadow-xl:  0 20px 25px rgba(0,0,0,0.08), 0 10px 10px rgba(0,0,0,0.03);
+  --shadow-blue: 0 4px 14px rgba(59,130,246,0.25);
+}
+
+/* ── Reset ────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: #FFFFFF;
+  color: #111111;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Focus ────────────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid #3B82F6;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Scrollbar ────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #F8FAFC; }
+::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+
+/* ── Code ─────────────────────────────────────────────────────────────────── */
+pre, code { font-family: "JetBrains Mono", "Fira Code", monospace; }
+
+/* ── Hero entrance animations ─────────────────────────────────────────────── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.anim-1 { animation: fade-up 0.6s cubic-bezier(0.22,1,0.36,1) 0.05s both; }
+.anim-2 { animation: fade-up 0.7s cubic-bezier(0.22,1,0.36,1) 0.15s both; }
+.anim-3 { animation: fade-up 0.7s cubic-bezier(0.22,1,0.36,1) 0.28s both; }
+.anim-4 { animation: fade-up 0.7s cubic-bezier(0.22,1,0.36,1) 0.40s both; }
+.anim-5 { animation: fade-up 0.7s cubic-bezier(0.22,1,0.36,1) 0.52s both; }
+
+/* ── Reduced motion ───────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
